@@ -1,0 +1,140 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  order       Int      @default(0)
+  title       String
+  subtitle    String
+  description String   @default("")
+  liveUrl     String?
+  githubUrl   String?
+  imageUrl    String?
+  stack       String[]
+  features    String[]
+  featured    Boolean  @default(false)
+  visible     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Experience {
+  id        String   @id @default(uuid())
+  order     Int      @default(0)
+  company   String
+  role      String
+  location  String
+  startDate String
+  endDate   String   @default("")
+  current   Boolean  @default(false)
+  bullets   String[]
+  tags      String[]
+  visible   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Education {
+  id        String   @id @default(uuid())
+  order     Int      @default(0)
+  degree    String
+  field     String
+  school    String
+  location  String
+  startDate String
+  endDate   String
+  visible   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Certification {
+  id        String   @id @default(uuid())
+  order     Int      @default(0)
+  name      String
+  issuer    String
+  year      String?
+  logoColor String   @default("#2563EB")
+  visible   Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model SkillCategory {
+  id       String   @id @default(uuid())
+  order    Int      @default(0)
+  icon     String
+  category String
+  skills   String[]
+  visible  Boolean  @default(true)
+}
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model VisitorCount {
+  id    Int @id @default(1)
+  count Int @default(0)
+}
+
+model SiteSettings {
+  id    Int @id @default(1)
+
+  // Personal info
+  ownerName   String @default("Radha Krishna Uppugandla")
+  ownerTitle  String @default("Full Stack Developer")
+  location    String @default("Cincinnati, OH")
+  email       String @default("radhakrishnauppugandla08@gmail.com")
+  linkedinUrl String @default("https://linkedin.com/in/radhakrishna-uppugandla")
+  githubUrl   String @default("https://github.com/krishnauppugandla")
+  resumeUrl   String @default("/resume.pdf")
+  available   Boolean @default(true)
+  notifyEmail String @default("radhakrishnauppugandla08@gmail.com")
+
+  // Hero section
+  availableBadgeText String @default("Open to opportunities")
+  heroSubtitle       String @default("Full Stack Developer — React · Node.js · PostgreSQL")
+  ctaButton1Text     String @default("View Work →")
+  ctaButton2Text     String @default("Let's Talk")
+
+  // About section
+  aboutEyebrow   String @default("About me")
+  aboutHeading   String @default("Building things that work")
+  aboutParagraph String @default("")
+  skillChips     String[] @default([])
+
+  // Experience section
+  experienceEyebrow String @default("Work history")
+  experienceHeading String @default("Where I've worked")
+
+  // Projects section
+  projectsEyebrow String @default("Featured work")
+  projectsHeading String @default("What I've built")
+
+  // Skills section
+  skillsEyebrow String @default("Stack")
+  skillsHeading String @default("Technical skills")
+
+  // Education section
+  educationEyebrow String @default("Background")
+  educationHeading String @default("Education & Certifications")
+
+  // Contact section
+  contactEyebrow  String @default("Get in touch")
+  contactHeading  String @default("Let's build something together")
+  contactSubtext      String @default("Open to full-time Software and Full Stack Developer roles across the US.")
+
+  // Floating button
+  floatingButtonText  String @default("Build Something")
+}
