@@ -1,17 +1,18 @@
 const nodemailer = require('nodemailer');
 
-const sendContactNotification = async ({ name, email, message }) => {
-  // Creating transporter inside the function each time
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
+// Moved transporter out of the function — was getting recreated on every call
+// which caused silent failures and weird smtp state issues
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
+const sendContactNotification = async ({ name, email, message }) => {
   const mailOptions = {
     from: `"Portfolio Contact" <${process.env.SMTP_USER}>`,
     to: process.env.SMTP_USER,
@@ -38,7 +39,8 @@ const sendContactNotification = async ({ name, email, message }) => {
   };
 
   try {
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent:', info.messageId);
     return { success: true };
   } catch (error) {
     console.error('Email send failed:', error.message);
