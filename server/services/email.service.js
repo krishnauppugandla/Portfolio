@@ -1,7 +1,5 @@
 const nodemailer = require('nodemailer');
 
-// Moved transporter out of the function — was getting recreated on every call
-// which caused silent failures and weird smtp state issues
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 587,
@@ -10,6 +8,12 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
+  tls: { rejectUnauthorized: false },
+});
+
+transporter.verify((err, ok) => {
+  if (err) console.error('SMTP error:', err.message);
+  else console.log('SMTP connected and ready');
 });
 
 const sendContactNotification = async ({ name, email, message }) => {
@@ -34,6 +38,10 @@ const sendContactNotification = async ({ name, email, message }) => {
           <strong>Message:</strong>
           <p style="margin-top:8px;line-height:1.6;white-space:pre-wrap">${message}</p>
         </div>
+        <p style="margin-top:20px;color:#666;font-size:13px">
+          Sent at: ${new Date().toLocaleString()}<br/>
+          View in admin panel to mark as read.
+        </p>
       </div>
     `,
   };
