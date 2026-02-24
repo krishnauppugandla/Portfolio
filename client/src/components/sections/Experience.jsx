@@ -25,7 +25,7 @@ export default function Experience({ experience, loading, settings }) {
         <ScrollReveal>
           <div className="mb-12">
             <p className="font-mono text-xs text-blue uppercase tracking-widest mb-2">
-              {settings?.experienceEyebrow || 'Work history'}
+              {settings?.experienceEyebrow || 'Work history '}
             </p>
             <h2 className="section-title">{settings?.experienceHeading || "Where I've worked"}</h2>
             <p className="section-subtitle">Companies I've contributed to as a Full Stack Developer</p>
