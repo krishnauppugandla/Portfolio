@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import ScrollReveal from '../ui/ScrollReveal';
 
+// Fallback chips if none configured in admin settings
 const DEFAULT_CHIPS = ['React.js', 'Node.js', 'PostgreSQL', 'Redis', 'TypeScript', 'AWS', 'Docker', 'Prisma'];
 
 function CodeBlock({ onHireClick, settings }) {
