@@ -2,7 +2,8 @@ require('dotenv').config();
 const app = require('./app');
 const prisma = require('./config/database');
 
-const PORT = process.env.PORT || 5000;
+// macOS grabs 5000 for AirPlay, so defaulting to 5001 locally
+const PORT = process.env.PORT || 5001;
 
 const start = async () => {
   await prisma.$connect();
