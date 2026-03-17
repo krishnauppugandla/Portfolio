@@ -203,7 +203,7 @@ async function main() {
       order: 2,
       degree: 'Bachelor of Technology',
       field: 'Information Technology',
-      school: 'Gudlavalleru Engineering College',
+      school: 'Gudlavalleru Engineering College', // corrected from JNTUH,
       location: 'Andhra Pradesh, India',
       startDate: 'Jul 2020',
       endDate: 'Apr 2024',
