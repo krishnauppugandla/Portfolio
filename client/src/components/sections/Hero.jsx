@@ -172,7 +172,7 @@ export default function Hero({ settings }) {
                 <p className="stat-value" style={{ fontSize: '1.4rem' }}>
                   {settings?.location || 'Cincinnati, OH'}
                 </p>
-                <p className="stat-sub">Open to relocate anywhere in the US</p>
+                <p className="stat-sub">Open to relocate anywhere in the US</p> {/* could make this a settings field too */}
               </motion.div>
 
               {/* Cards 2 + 3 — side by side */}
