@@ -5,6 +5,7 @@ import { useSettings } from '../../context/SettingsContext';
 
 export default function HireMeButton() {
   const { settings } = useSettings();
+  // read from CMS so it can be updated without redeploying
   const buttonText = settings?.floatingButtonText || 'Build Something';
   const [show, setShow] = useState(false);
   const [contactVisible, setContactVisible] = useState(false);
