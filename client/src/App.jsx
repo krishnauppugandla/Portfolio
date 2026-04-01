@@ -23,7 +23,7 @@ import Contact from './components/sections/Contact';
 import { getProjects, getExperience, getCertifications, getSkills } from './api/public.api';
 import api from './api/axios';
 
-// Admin — lazy loaded
+// Admin routes — lazy loaded so they don't bloat the initial bundle
 const AdminLogin = lazy(() => import('./admin/AdminLogin'));
 const AdminLayout = lazy(() => import('./admin/AdminLayout'));
 const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
