@@ -135,6 +135,6 @@ model SiteSettings {
   contactHeading  String @default("Let's build something together")
   contactSubtext      String @default("Open to full-time Software and Full Stack Developer roles across the US.")
 
-  // Floating button
+  // Floating button (bottom-right of the portfolio)
   floatingButtonText  String @default("Build Something")
 }

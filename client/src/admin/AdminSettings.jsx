@@ -128,7 +128,8 @@ export default function AdminSettings() {
             <input className={inputCls} value={form.ctaButton2Text || ''} onChange={(e) => set('ctaButton2Text', e.target.value)} placeholder="Let's Talk" />
           </Field>
         </div>
-        <Field label="Floating Button Text" hint="The floating button shown at the bottom right of the portfolio">
+        {/* floating button text — tied to HireMeButton component */}
+          <Field label="Floating Button Text" hint="The floating button shown at the bottom right of the portfolio">
           <input className={inputCls} value={form.floatingButtonText || ''} onChange={(e) => set('floatingButtonText', e.target.value)} placeholder="Build Something" />
         </Field>
       </div>
