@@ -19,7 +19,8 @@ function ParticleDots() {
         <motion.div
           key={dot.id}
           className="absolute rounded-full bg-blue"
-          style={{
+          // subtle grid bg — just CSS, no library needed
+      style={{
             left: `${dot.x}%`,
             top: `${dot.y}%`,
             width: dot.size,
@@ -65,6 +66,7 @@ export default function Hero({ settings }) {
     <section
       id="hero"
       className="relative min-h-screen flex items-center pt-[60px] overflow-hidden bg-white"
+      // subtle grid bg — just CSS, no library needed
       style={{
         backgroundImage: 'linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.05) 1px, transparent 1px)',
         backgroundSize: '52px 52px',
