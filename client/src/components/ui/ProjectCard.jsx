@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'; // was mid-file, moved to top
 import { ExternalLink, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
 
