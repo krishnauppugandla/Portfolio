@@ -18,6 +18,7 @@ const TITLE_MAP = {
   '/admin/settings':        'Settings',
 };
 
+// toast context — shared with all admin pages
 export const AdminToastContext = createContext(null);
 export const useAdminToast = () => useContext(AdminToastContext);
 
