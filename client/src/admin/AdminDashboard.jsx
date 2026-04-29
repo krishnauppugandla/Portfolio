@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Rocket, Briefcase, MessageSquare, Eye, Plus } from 'lucide-react';
 import { adminGetProjects } from '../api/admin.api';
 import { adminGetExperience, adminGetMessages } from '../api/admin.api';
-import { incrementVisitors } from '../api/public.api';
+import { incrementVisitors } from '../api/public.api'; // removed getSettings, using context now
 
 function StatCard({ icon: Icon, label, value, color = 'blue' }) {
   const colors = {
