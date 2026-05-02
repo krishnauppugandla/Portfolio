@@ -10,6 +10,8 @@ export function SettingsProvider({ children }) {
   useEffect(() => {
     // Fetch once at app load so every component can just call useSettings()
     // instead of each making its own /settings request
+    // Fetch once at app load so every component can just call useSettings()
+    // instead of each making its own /settings request
     api.get('/settings')
       .then((r) => setSettings(r.data))
       .catch((e) => console.error('Failed to load settings:', e))
