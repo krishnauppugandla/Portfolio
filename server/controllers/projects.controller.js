@@ -3,7 +3,6 @@ const { cloudinary } = require('../config/cloudinary');
 
 const getAll = async (req, res) => {
   // TODO: add pagination here once the project list gets long enough to matter
-  // TODO: add pagination here once the project list gets long enough to matter
   const projects = await prisma.project.findMany({ orderBy: { order: 'asc' } });
   res.json(projects);
 };

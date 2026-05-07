@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken');
 
 // TODO: this Map grows forever if someone hammers the endpoint from tons of IPs.
 // Fine for a personal portfolio, but worth switching to Redis if this ever scales.
-// TODO: this Map grows forever if someone hammers from tons of IPs.
-// Fine for a personal portfolio, but worth switching to Redis if this ever scales.
 const loginAttempts = new Map();
 
 const login = async (req, res) => {

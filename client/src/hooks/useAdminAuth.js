@@ -10,7 +10,7 @@ export function useAdminAuth() {
     verify().then((valid) => {
       if (!valid) navigate('/admin/login', { replace: true });
     });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { admin, loading };
 }

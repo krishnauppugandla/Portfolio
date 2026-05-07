@@ -7,7 +7,6 @@ const getProjects = async (req, res) => {
     orderBy: { order: 'asc' },
   });
   // console.log(`[projects] returning ${projects.length} items`);
-  // console.log(`[projects] returning ${projects.length} items`);
   res.json(projects);
 };
 
