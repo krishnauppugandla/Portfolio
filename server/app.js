@@ -9,7 +9,25 @@ const app = express();
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({
-  origin: [process.env.CLIENT_URL, 'http://localhost:5173', 'http://localhost:4173'],
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, Postman)
+    if (!origin) return callback(null, true);
+
+    const allowed = [
+      process.env.CLIENT_URL,
+      'http://localhost:5173',
+      'http://localhost:4173',
+    ].filter(Boolean);
+
+    // Also allow any Vercel preview URL for this project
+    const isVercelPreview = /^https:\/\/portfolio-.*-krishnauppugandlas-projects\.vercel\.app$/.test(origin);
+
+    if (allowed.includes(origin) || isVercelPreview) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS: origin ${origin} not allowed`));
+    }
+  },
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
