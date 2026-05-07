@@ -9,8 +9,7 @@ const start = async () => {
   await prisma.$connect();
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
-    console.log(`SMTP_USER: ${process.env.SMTP_USER ? process.env.SMTP_USER : '⚠️  NOT SET'}`);
-    console.log(`SMTP_PASS: ${process.env.SMTP_PASS ? '✅ set' : '⚠️  NOT SET'}`);
+    console.log(`Email: ${process.env.RESEND_API_KEY ? '✅ Resend configured' : '⚠️  RESEND_API_KEY not set'}`);
   });
 };
 
