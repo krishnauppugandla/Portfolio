@@ -7,6 +7,9 @@ const { generalLimiter } = require('./middleware/rateLimiter');
 
 const app = express();
 
+// Render (and most cloud hosts) sit behind a proxy — needed for rate limiter + correct IPs
+app.set('trust proxy', 1);
+
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({
   origin: (origin, callback) => {
