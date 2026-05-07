@@ -19,8 +19,8 @@ app.use(cors({
       'http://localhost:4173',
     ].filter(Boolean);
 
-    // Also allow any Vercel preview URL for this project
-    const isVercelPreview = /^https:\/\/portfolio-.*-krishnauppugandlas-projects\.vercel\.app$/.test(origin);
+    // Allow any Vercel deployment URL (preview + production)
+    const isVercelPreview = /^https:\/\/[a-z0-9-]+\.vercel\.app$/.test(origin);
 
     if (allowed.includes(origin) || isVercelPreview) {
       callback(null, true);
