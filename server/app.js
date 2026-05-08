@@ -16,8 +16,10 @@ app.use(cors({
     // Allow requests with no origin (mobile apps, curl, Postman)
     if (!origin) return callback(null, true);
 
+    const clientUrl = process.env.CLIENT_URL; // e.g. https://radhakrishna.dev
     const allowed = [
-      process.env.CLIENT_URL,
+      clientUrl,
+      clientUrl ? `https://www.${clientUrl.replace('https://', '')}` : null, // also allow www variant
       'http://localhost:5173',
       'http://localhost:4173',
     ].filter(Boolean);
